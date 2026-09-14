@@ -1,27 +1,34 @@
 {
-  "actualizado": "19 jul 2026",
+  "actualizado": "14 sep 2026",
   "tiles": [
-    { "k": "Días hasta gate G1", "v": "12", "n": "31 jul · pipeline v1 + corpus" },
-    { "k": "Reseñas etiquetadas", "v": null, "n": "objetivo 2.000 — actualizar tras Label Studio" },
-    { "k": "Runs en el benchmark", "v": "0", "n": "5 modelos pendientes de ejecución" },
-    { "k": "Votaciones urgentes", "v": "2", "n": "V-7.1 (modelos) · V-5.1 (criterio G1)" }
+      { "k": "Días hasta la entrega", "v": "3", "n": "17 sep · entrega final (G3)" },
+    { "k": "Reseñas etiquetadas", "v": "300", "n": "objetivo revisado a 300 (V-5.1) — corpus congelado" },
+    { "k": "Runs en el benchmark", "v": "7", "n": "Ruta A (5 modelos) + Ruta B (2, distant supervision) en BENCHMARK.md" },
+    { "k": "Votaciones urgentes", "v": "0", "n": "V-7.1 cerrada 21-ago · V-5.1 resuelta" }
   ],
   "gates": [
-    { "id": "G1 · Pipeline v1", "fecha": "fin jul 2026", "estado": "warning",
-      "items": ["Reseña nueva atraviesa Kafka→Spark→Delta Lake",
-                "Corpus etiquetado (criterio en votación V-5.1)",
-                "Acuerdo inter-anotador calculado (V-5.2)",
-                "F1 reales de M-0 y M-2 en el leaderboard"] },
-    { "id": "G2 · Prototipo", "fecha": "fin ago 2026", "estado": "pending",
-      "items": ["Comparativa MarIA vs. XLM-R con test estadístico",
-                "Dashboard SaaS con alertas por umbral ABSA",
-                "Derechos de datos documentados (T&C)"] },
-    { "id": "G3 · Entrega", "fecha": "sep 2026", "estado": "pending",
-      "items": ["Memoria ≤ 20 págs. verificadas", "Endpoint FastAPI demostrable",
-                "Repo accesible por tutores (C. Ortega, S. Mota)",
-                "Bibliografía ≤ 0,5 pág. (8-10 refs)"] }
+    { "id": "G1 · Pipeline v1", "fecha": "31 jul 2026", "estado": "done",
+      "items": [
+        "Reseña nueva atraviesa Kafka→Spark→Delta Lake",
+        "Corpus etiquetado: 300/300 (criterio V-5.1)",
+        "Acuerdo inter-anotador calculado (α de Krippendorff, V-5.2): α global 0.700 [IC95% 0.644–0.752]",
+        "F1 reales de M-0 y M-2 en el leaderboard"
+      ] },
+    { "id": "G2 · Prototipo", "fecha": "fin ago 2026", "estado": "warning",
+      "items": [
+        "Comparativa BERT-base-uncased vs. XLM-R con test estadístico (V-7.1, MarIA descartado)",
+        "Dashboard SaaS con alertas por umbral ABSA — [PENDIENTE-VERIFICACIÓN]",
+        "Derechos de datos documentados (T&C) — [PENDIENTE-VERIFICACIÓN, dueña Noelia]"
+      ] },
+    { "id": "G3 · Entrega", "fecha": "17 sep 2026", "estado": "warning",
+      "items": [
+        "Memoria ≤ 20 págs. verificadas — [PENDIENTE-VERIFICACIÓN]",
+        "Endpoint FastAPI demostrable (2 implementaciones en el repo; integración/PR pendiente de revisión)",
+        "Repo accesible por tutores (C. Ortega, S. Mota) — confirmado",
+        "Bibliografía ≤ 0,5 pág. (8-10 refs) — [PENDIENTE-VERIFICACIÓN]"
+      ] }
   ],
-  "corpus": { "etiquetadas": null, "objetivo": 2000, "dobleEtiquetado": null },
+  "corpus": { "etiquetadas": 300, "objetivo": 300, "dobleEtiquetado": 30 },
   "paginas": [
     { "cap": "Cap. 1-2 Introducción y negocio", "asignadas": 2.5, "consumidas": null },
     { "cap": "Cap. 3-4 Contexto y objetivos",   "asignadas": 2.0, "consumidas": null },
@@ -34,32 +41,32 @@
     { "cap": "Cap. 11 Conclusiones",            "asignadas": 1.5, "consumidas": null }
   ],
   "leaderboard": [
-    { "m": "M-0 Mayoría de clase",    "f1": null, "peor": null, "run": null, "autor": "libre" },
-    { "m": "M-1 Léxico español",      "f1": null, "peor": null, "run": null, "autor": "libre" },
-    { "m": "M-2 TF-IDF + SVM",        "f1": null, "peor": null, "run": null, "autor": "libre" },
-    { "m": "M-3 MarIA (fine-tuning)", "f1": null, "peor": null, "run": null, "autor": "libre" },
-    { "m": "M-4 XLM-R (fine-tuning)", "f1": null, "peor": null, "run": null, "autor": "libre" }
+    { "m": "M-0 Mayoría de clase",                "f1": 0.2662, "peor": null, "run": "kaggle", "autor": "luis" },
+    { "m": "M-1 Léxico español",                  "f1": 0.5358, "peor": null, "run": "kaggle", "autor": "luis" },
+    { "m": "M-2 TF-IDF + SVM (RBF)",               "f1": 0.5603, "peor": null, "run": "kaggle", "autor": "luis" },
+    { "m": "M-3 BERT-base-uncased (fine-tuning)",  "f1": 0.5904, "peor": null, "run": "0691e7983b164d868c0a72ed47ef9e2e", "autor": "luis" },
+    { "m": "M-4 XLM-R (fine-tuning)",              "f1": 0.5839, "peor": null, "run": "0dc7baf6b218471b9f3a6af6e4b53ab2", "autor": "luis" }
   ],
   "votaciones": [
-    { "id": "V-7.1", "cap": "Cap. 7", "urgente": true,
+    { "id": "V-7.1", "cap": "Cap. 7", "urgente": false,
       "q": "Modelos de la comparativa — BERTinho es gallego, no español",
-      "ops": "(a) MarIA vs. XLM-R · (b) + BETO · (c) mantener BERTinho con línea en gallego" },
-    { "id": "V-5.1", "cap": "Cap. 5", "urgente": true,
+      "ops": "RESUELTA 21-ago-2026: MarIA descartado; comparativa final BERT-base-uncased (M-3) vs. XLM-R-base (M-4)" },
+    { "id": "V-5.1", "cap": "Cap. 5", "urgente": false,
       "q": "Criterio parcial del gate G1 (vence 25 jul)",
-      "ops": "(a) 2.000 o no pasa · (b) ≥1.200 + acuerdo + F1 de M-0/M-2" },
+      "ops": "RESUELTA: corpus fijado en 300 reseñas etiquetadas (revisado a la baja desde el objetivo inicial de 2.000)" },
     { "id": "V-5.2", "cap": "Cap. 5", "urgente": false,
       "q": "Métrica de acuerdo inter-anotador",
-      "ops": "(a) κ de Cohen · (b) α de Krippendorff por aspecto" },
+      "ops": "RESUELTA: (b) α de Krippendorff por aspecto — α global 0.700 [IC95% 0.644–0.752]" },
     { "id": "V-7.3", "cap": "Cap. 7", "urgente": false,
       "q": "Protocolo de evaluación NER",
-      "ops": "(a) subconjunto propio + seqeval estricto · (b) solo anonimización, declarado en Cap. 10" }
+      "ops": "(a) subconjunto propio + seqeval estricto · (b) solo anonimización, declarado en Cap. 10 — [PENDIENTE-VERIFICACIÓN: no confirmado si ya se resolvió]" }
   ],
   "riesgos": [
-    { "t": "Decisión de modelos bloquea el fine-tuning", "nivel": "critical",
-      "d": "Sin cerrar V-7.1 no se puede lanzar el entrenamiento con garantías. Dueño: Luis." },
-    { "t": "Calendario G1: etiquetado en 12 días", "nivel": "serious",
-      "d": "2.000 reseñas a ritmo de 5 personas ≈ 34/persona/día. Mitigación: votar V-5.1 y paralelizar etiquetado." },
+    { "t": "split_v1.json no está commiteado en el repositorio", "nivel": "warning",
+      "d": "El split congelado (seed 42, corpus_sha256, test_hoteles) que sustenta todas las cifras del Cap. 7 solo existe en Drive y en local; benchmark/splits/ en GitHub solo tiene el README. Riesgo de reproducibilidad citado en los Anexos A/B." },
     { "t": "T&C de Booking/TripAdvisor sin verificar", "nivel": "warning",
-      "d": "Bloquea la política de datos del repo (V-5.3). Dueña de la verificación: Noelia (ago)." }
+      "d": "Bloquea la política de datos del repo (V-5.3). Dueña de la verificación: Noelia (plazo agosto, sin confirmación de cierre)." },
+    { "t": "Divergencia main/develop en el repositorio", "nivel": "serious",
+      "d": "BENCHMARK.md y la carpeta api/ difieren entre ramas por subidas directas a main sin PR de por medio. Riesgo de que las cifras y el código citados en la memoria no coincidan con lo mergeado en develop." }
   ]
 }
